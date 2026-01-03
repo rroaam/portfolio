@@ -18,14 +18,15 @@ export default function ProjectCard({ slug, frontmatter, index }: ProjectCardPro
         opacity: 0 
       }}
     >
-      {/* Thumbnail placeholder - replace with actual images */}
+      {/* Thumbnail */}
       <div className="absolute inset-0 bg-gradient-to-br from-[--color-surface-elevated] to-[--color-void]">
-        {frontmatter.thumbnail && frontmatter.thumbnail !== '/images/placeholder/thumb.jpg' && (
+        {frontmatter.thumbnail && !frontmatter.thumbnail.includes('placeholder') && (
           <Image
-            src={frontmatter.thumbnail}
+            src={decodeURIComponent(frontmatter.thumbnail)}
             alt={frontmatter.title}
             fill
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         )}
       </div>
